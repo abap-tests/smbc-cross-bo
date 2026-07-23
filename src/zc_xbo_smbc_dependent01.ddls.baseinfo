@@ -1,0 +1,14 @@
+{
+  "BASEINFO": {
+    "FROM": [
+      "ZR_XBO_SMBC_DEPENDENT01"
+    ],
+    "ASSOCIATED": [
+      "ZC_XBO_SMBC_DEPENDENT",
+      "ZR_XBO_SMBC_DEPENDENT"
+    ],
+    "BASE": [
+      "ZR_XBO_SMBC_DEPENDENT01"
+    ]
+  }
+}

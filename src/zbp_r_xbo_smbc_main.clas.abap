@@ -1,0 +1,7 @@
+CLASS zbp_r_xbo_smbc_main DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zr_xbo_smbc_main.
+ENDCLASS.
+
+
+
+CLASS zbp_r_xbo_smbc_main IMPLEMENTATION.
+ENDCLASS.

@@ -1,0 +1,50 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Cross-BO (TEST)",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "ZUI_XBO_SMBC_O4",
+    "serviceName": "ZUI_XBO_SMBC_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "Main",
+    "name": "Cross-BO (TEST)",
+    "configurationGroup": "",
+    "skipRootEntity": false
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "Main"
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "Dependent",
+        "tableType": "gridTable",
+        "selectAll": true,
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true,
+        "widthIncludingColumnHeader": true
+      },
+      {
+        "entitySet": "Dependent01",
+        "tableType": "gridTable",
+        "selectAll": true,
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true,
+        "widthIncludingColumnHeader": true
+      },
+      {
+        "entitySet": "Main",
+        "tableType": "gridTable",
+        "selectAll": true,
+        "createAtEnd": true,
+        "widthIncludingColumnHeader": true
+      }
+    ]
+  }
+}

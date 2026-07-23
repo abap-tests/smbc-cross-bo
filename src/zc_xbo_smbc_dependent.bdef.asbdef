@@ -1,0 +1,26 @@
+projection;
+strict ( 2 );
+use draft as dependent;
+
+
+define behavior for ZC_XBO_SMBC_Dependent //alias <alias_name>
+{
+
+  use update;
+  use delete;
+
+  use association _Main { with draft; inverse function ToMain; }
+  use association _01 { create; with draft; }
+
+}
+
+
+define behavior for ZC_XBO_SMBC_Dependent01 //alias <alias_name>
+{
+
+  use update;
+  use delete;
+
+  use association _Dependent { with draft; }
+
+}

@@ -1,0 +1,21 @@
+projection;
+strict ( 2 );
+use draft;
+
+
+define behavior for ZC_XBO_SMBC_Main alias Main
+{
+
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _Dependent { create; with dependent draft; }
+
+}

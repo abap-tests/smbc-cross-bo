@@ -1,0 +1,99 @@
+managed implementation in class zbp_r_xbo_smbc_dependent unique;
+strict ( 2 );
+with draft;
+with cross associations;
+
+
+define behavior for ZR_XBO_SMBC_Dependent alias Dependent
+persistent table zxbo_smbc_dep
+draft table zxbodsmbc_dep
+lock master total etag EtagMaster
+authorization master ( global )
+{
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  association _01 { create; with draft; }
+
+  field ( numbering : managed, readonly )
+  Dependent;
+
+  field ( readonly, notrigger )
+  Main,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  EtagMaster;
+
+  association _Main
+  {
+    with draft;
+    inverse function ToMain;
+    link action LinkToMain;
+    unlink action UnlinkFromMain;
+  }
+
+  mapping for zxbo_smbc_dep
+    {
+      Dependent     = dependent;
+      Main          = main;
+      Name          = name;
+      CreatedBy     = created_by;
+      CreatedAt     = created_at;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+      EtagMaster    = etag_master;
+    }
+
+}
+
+
+define behavior for ZR_XBO_SMBC_Dependent01 alias Child01
+persistent table zxbo_smbc_dep01
+draft table zxbodsmbc_dep01
+lock dependent by _Dependent
+authorization dependent by _Dependent
+etag master EtagMaster
+{
+
+  update;
+  delete;
+
+  field ( numbering : managed, readonly )
+  UUID;
+
+  field ( mandatory : create, readonly : update )
+  Name;
+
+  field ( readonly, notrigger )
+  Dependent,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  EtagMaster;
+
+  association _Dependent { with draft; }
+
+  mapping for zxbo_smbc_dep01
+    {
+      UUID          = uuid;
+      Dependent     = dependent;
+      Name          = name;
+      CreatedBy     = created_by;
+      CreatedAt     = created_at;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+      EtagMaster    = etag_master;
+    }
+
+}

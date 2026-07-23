@@ -1,0 +1,47 @@
+managed implementation in class zbp_r_xbo_smbc_main unique;
+strict ( 2 );
+with draft;
+with cross associations;
+
+
+define behavior for ZR_XBO_SMBC_Main alias Main
+persistent table zxbo_smbc_main
+draft table zxbodsmbc_main
+lock master total etag EtagMaster
+authorization master ( global )
+{
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  field ( numbering : managed, readonly )
+  Main;
+
+  field ( readonly, notrigger )
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  EtagMaster;
+
+  association _Dependent using ZR_XBO_SMBC_Dependent \ _Main { create; with draft; }
+
+  mapping for zxbo_smbc_main
+    {
+      Main          = main;
+      Name          = name;
+      CreatedBy     = created_by;
+      CreatedAt     = created_at;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+      EtagMaster    = etag_master;
+    }
+
+}
